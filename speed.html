@@ -3,7 +3,7 @@
         <title>Speedoll - homepage</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit&display=swap&subset=thai" />
         <link rel="stylesheet" href="css/common.css" />
-        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/speed.css" />
     </head>
     <body>
         <div class="bar">
@@ -15,15 +15,60 @@
                 <div class="nav-link-wrapper">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="speed.html" class="nav-link current">Speed</a>
-                    <a href="forum.html" class="nav-link">Forum</a>
+                    <a href="docs.html" class="nav-link">Docs</a>
                     <a href="about.html" class="nav-link">About us</a>
                 </div>
             </div>
         </div>
         <div class="content">
             <div class="content-card glass">
-                
+                <div class="speed-card">
+                    <div class="desc">Your live speed:</div>
+                    <div class="meter safe" id="meter">
+                        0 <span>kmph</span>
+                    </div>
+                    <div class="warn safe" id="warn">Safe</div>
+                </div>
             </div>
         </div>
+        <script>
+            function getSpeed(x)
+            {
+                x /= 100;
+                x = Math.sin(x) * 4;
+                x -= 2;
+                return Math.abs((Math.pow(x,5) - (1.5)*(Math.pow(x,4)) + (0.25)*(Math.pow(x,3)) - (3)*(Math.pow(x,2)) - (0.25)*(x) + 85));
+            }
+
+            function validateSpeed(v)
+            {
+                if(speed >= 80)
+                {
+                    document.getElementById("warn").innerHTML = "Danger!";
+                    document.getElementById("warn").className = "warn danger";
+                    document.getElementById("meter").className = "meter danger";
+                }
+                else if(speed >= 60)
+                {
+                    document.getElementById("warn").innerHTML = "Slow down a little";
+                    document.getElementById("warn").className = "warn slow";
+                    document.getElementById("meter").className = "meter slow";
+                }
+                else
+                {
+                    document.getElementById("warn").innerHTML = "Safe";
+                    document.getElementById("warn").className = "warn safe";
+                    document.getElementById("meter").className = "meter safe";
+                }
+            }
+
+            let c = 0;
+            let speed = 0;
+            setInterval(()=>{
+                speed = Math.round(getSpeed(c++ % 65));
+                document.getElementById("meter").innerHTML = speed + " <span>kmph<span>";
+                validateSpeed(speed);
+            }, 500);
+        </script>
     </body>
 </html>

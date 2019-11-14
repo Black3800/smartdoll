@@ -1,0 +1,51 @@
+.speed-card
+{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.desc
+{
+    width: 20%;
+}
+
+.meter
+{
+    font-size: 20pc;
+    width: 80%;
+    text-align: center;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+
+}
+
+.meter span
+{
+    font-size: 5pc;
+}
+
+.warn
+{
+    font-size: 3pc;
+    width: 100%;
+    text-align: center;
+    transition: color 0.2s;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.2);
+}
+
+.meter.safe, .warn.safe
+{
+    color: #2E2B7C;
+}
+
+.meter.slow, .warn.slow
+{
+    color: #5FBB97;
+}
+
+.meter.danger, .warn.danger
+{
+    color: rgb(124, 43, 43);
+}
