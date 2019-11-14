@@ -138,6 +138,12 @@ body
     background: linear-gradient(53deg, rgba(141,153,174,1) 0%, rgba(188,194,204,1) 30%, rgba(151,167,193,1) 62%, rgba(141,153,174,1) 100%);
 }
 
+.content-card.padded
+{
+    padding-left: 20vh;
+    padding-right: 20vh;
+}
+
 .img-card
 {
     width: 40%;
@@ -171,6 +177,12 @@ body
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+}
+
+p.medium
+{
+    font-size: 2em;
+    text-indent: 75px;
 }
 
 p.large
